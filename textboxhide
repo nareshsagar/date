@@ -1,0 +1,20 @@
+
+
+
+		  
+<script type="text/javascript">
+    function ShowHideDiv(chng_rentetion_label) {
+        var chng_rentetion = document.getElementById("chng_rentetion");
+        chng_rentetion.style.display = chng_rentetion_label.checked ? "block" : "none";
+    }
+</script>
+<label for="chng_rentetion_label">
+    <input type="checkbox" id="chng_rentetion_label" onclick="ShowHideDiv(this)" />
+    Change default retention period?
+</label>
+<hr />
+<div id="chng_rentetion" style="display: none" class="input-box">
+    Retention Period:
+    <input type="text" id="txtPassportNumber" />
+</div>
+		  
