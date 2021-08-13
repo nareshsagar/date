@@ -48,5 +48,49 @@ insert_data_labels(barFemale)
 
 
 
+import smtplib
+import openpyxl as xl
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+username = str(input('Your Username:'))
+password = str(input('Your Password:'))
+From = username
+Subject = 'Test'
+#
+# wb = xl.load_workbook(r'C:\Users\\OneDrive\Desktop\insta-web\emailer.xlsx')
+# sheet1 = wb['Sheet1'] #wb.get_sheet_by_name('Sheet1')
+#
+#
+# names = []
+# emails = []
+#
+# for cell in sheet1['A']:
+#     emails.append(cell.value)
+#
+# for cell in sheet1['B']:
+#     names.append(cell.value)
+
+server = smtplib.SMTP('smtp.office365.com', 587)
+server.starttls()
+server.login(username, password)
+
+# for i in range(len(emails)):
+msg = MIMEMultipart()
+msg['From'] = username
+send_to_email_var = [',']
+msg['To'] = ", ".join(send_to_email_var)
+msg['Subject'] = Subject
+text = '''
+Hello Naresh,
+test email with python script
+'''
+msg.attach(MIMEText(text, 'plain'))
+message = msg.as_string()
+server.sendmail(username,'testmyemail@gmail.com', message)
+
+
+server.quit()
+print('All emails sent successfully!')
 
 
