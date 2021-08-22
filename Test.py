@@ -93,4 +93,25 @@ server.sendmail(username,'testmyemail@gmail.com', message)
 server.quit()
 print('All emails sent successfully!')
 
+============================================
 
+def SendemailwithExchangeLib():
+    import os
+    from exchangelib import Account, CalendarItem, Message, Mailbox, \
+        FileAttachment, HTMLBody
+
+    from exchangelib import Account, Credentials
+
+    email = ''
+    password = ''
+
+    a = Account(email, credentials=Credentials(email, password), autodiscover=True)
+
+    # If you don't want a local copy
+    m = Message(
+        account=a,
+        subject='Daily motivation',
+        body='All bodies are beautiful',
+        to_recipients=[Mailbox(email_address='@gmail.com')]
+    )
+    m.send()
